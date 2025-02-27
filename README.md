@@ -8,6 +8,6 @@
     + `docker-compose build && docker-compose up -d` - білд та підняття контейнерів
     + `docker-compose exec php-fpm bash` - перехід у php-fpm контейнер для встановлення композеру (та виконання в майбутньому artisan команд)
     + `composer install` - встановлення composer
-    + `php artisan migrate` - виконання міграцій та заповнення тестовими данними БД
+    + `php artisan migrate` - виконання міграцій
 
 Проєкт має бути доступним за посиланням http://localhost
