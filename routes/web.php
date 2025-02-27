@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LuckyPageController;
 use Illuminate\Support\Facades\Route;
@@ -23,13 +22,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
 //});
 
-Route::middleware('auth')->group(function (){
-
-    Route::get('lucky-page/{hash}', [LuckyPageController::class, 'index'])
-        ->where(['hash' => "[0-9a-z]+"])
-        ->name('lucky-page');
-
-    Route::post('logout', [LogoutController::class, 'logout']);
-});
-
+Route::middleware('auth')->get('/lucky-page/{hash}', [LuckyPageController::class, 'index'])
+    ->where(['hash' => "[0-9a-z]+"])
+    ->name('lucky-page');
 

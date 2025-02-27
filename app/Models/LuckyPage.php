@@ -33,6 +33,6 @@ class LuckyPage extends Model
             ->where('hash', $hash)
             ->where('user_id', $userId)
             ->where('is_active', true)
-            ->where('expire_at', '<=', now());
+            ->where('expire_at', '>=', now());
     }
 }

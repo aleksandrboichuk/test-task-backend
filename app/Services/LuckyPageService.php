@@ -36,7 +36,9 @@ class LuckyPageService
 
         $sum = $number % 2 ? 0 : $this->calculateSum($number);
 
-        $this->luckyPageHistoryRepository->create(compact('result', 'number', 'sum', 'lucky_page_id'));
+        $this->luckyPageHistoryRepository->create(
+            compact('result', 'number', 'sum', 'lucky_page_id')
+        );
 
         return [$result, $sum, $number];
     }
@@ -68,7 +70,7 @@ class LuckyPageService
         return $hash;
     }
 
-    public function history(string $hash, int $entriesCount): Collection
+    public function retrieveHistory(string $hash, int $entriesCount): Collection
     {
         return $this->luckyPageHistoryRepository->retrieveLastEntries($hash, auth()->id(), $entriesCount);
     }

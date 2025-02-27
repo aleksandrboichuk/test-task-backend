@@ -36,7 +36,7 @@ class LuckyPageController extends Controller
     {
         try{
 
-            $history = $this->luckyPageService->history($hash, 3);
+            $history = $this->luckyPageService->retrieveHistory($hash, 3);
 
             return Response::success(compact('history'));
 

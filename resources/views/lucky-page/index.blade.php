@@ -29,15 +29,18 @@
         document.getElementById('luckyBtn').addEventListener('click', async function() {
             const response = await fetch(`/api/im-feeling-lucky/${hash}`);
             const data = await response.json();
+            if(response.status !== 200){
+                alert(data.message);
+            }
             let color = data.result === "Win" ? "green" : "red";
 
             let html = `
-    <p style="color: ${color};">Результат: ${data.result}</p>
-    <p>Число: ${data.number}</p>
+    <p style="color: ${color};">Result: ${data.result}</p>
+    <p>Number: ${data.number}</p>
 `;
 
             if(data.sum > 0){
-                html += `<p>Сума: ${data.sum}</p>`;
+                html += `<p>Sum: ${data.sum}</p>`;
             }
             document.getElementById('luckyResult').innerHTML = html;
         });

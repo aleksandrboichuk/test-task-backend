@@ -22,10 +22,7 @@ class LuckyPageRepository extends BaseRepository
     public function deactivate(string $hash, int $userId): bool
     {
         return $this->model->query()
-            ->where('hash', $hash)
-            ->where('user_id', $userId)
-            ->where('is_active', true)
-            ->where('expire_at', '<=', now())
+            ->retrieveByHash($hash, $userId)
             ->update(['is_active' => false]);
     }
 }
