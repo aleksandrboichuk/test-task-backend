@@ -31,6 +31,8 @@ services:
       - db_logs:/var/log/mysql
     ports:
       - "3306:3306"
+    networks:
+      - app-network
 
   nginx:
     image: nginx:alpine
